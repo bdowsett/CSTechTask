@@ -4,17 +4,18 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.cstechtask.model.CoachingSummary
 import com.example.cstechtask.model.CreditReportInfo
+import com.example.cstechtask.model.DonutApi
 import com.example.cstechtask.model.DonutData
 import com.example.cstechtask.model.DonutDetailsRepository
+import com.example.cstechtask.model.DonutDetailsRepositoryImpl
 import com.example.cstechtask.viewmodel.DonutViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import retrofit2.Response
@@ -25,8 +26,8 @@ class DonutViewModelTest {
     @get:Rule
     val taskExecutor = InstantTaskExecutorRule()
 
-    private val testDispatcher = TestCoroutineDispatcher()
-    private val testScope = TestCoroutineScope(testDispatcher)
+    @get:Rule
+    val coroutinesTestRule = CoroutinesTestRule()
 
     private val testDonutData = DonutData(
         accountIDVStatus = "perpetua",
@@ -73,11 +74,15 @@ class DonutViewModelTest {
     private val viewModel = DonutViewModel()
     private val dataObserver: Observer<DonutData> = mock()
     private var donutDetailsRepo: DonutDetailsRepository = mock()
+    private var donutApi: DonutApi = mock()
 
     @Test
-    fun testLiveDataIsSet() = testScope.runTest {
+    fun testLiveDataIsSet() = runTest {
+        viewModel.donutData.observeForever(dataObserver)
         given(donutDetailsRepo.getDonutDetails()).willReturn(Response.success(testDonutData))
+        `when`(donutDetailsRepo.getDonutDetails()).thenReturn(Response.success(testDonutData))
 
+        // Method under test
         viewModel.getDonutDetails()
 
         verify(dataObserver).onChanged(testDonutData)
