@@ -14,10 +14,6 @@ class DonutViewModel : ViewModel() {
     val donutData: MutableLiveData<DonutData>
         get() = _donutData
 
-    init {
-        getDonutDetails()
-    }
-
     fun getDonutDetails() {
         viewModelScope.launch {
             val response = donutRepo.getDonutDetails()

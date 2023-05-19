@@ -44,6 +44,8 @@ class DonutFragment : Fragment() {
             }
         }
 
+        donutViewModel.getDonutDetails()
+
         binding.donut.setOnClickListener {
                 view ->
             view.findNavController().navigate(R.id.navigate_to_details, bundle)
