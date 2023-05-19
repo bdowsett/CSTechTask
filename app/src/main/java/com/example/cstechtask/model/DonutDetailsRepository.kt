@@ -6,7 +6,7 @@ interface DonutDetailsRepository {
     suspend fun getDonutDetails(): Response<DonutData>
 }
 
-open class DonutDetailsRepositoryImpl() : DonutDetailsRepository {
+class DonutDetailsRepositoryImpl() : DonutDetailsRepository {
 
     private val donutApiService: DonutApi = retrofit.create(DonutApi::class.java)
 

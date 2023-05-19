@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cstechtask.model.CreditReportInfo
 
-open class DetailViewModel : ViewModel() {
+class DetailViewModel : ViewModel() {
 
     private val _detailData = MutableLiveData<CreditReportInfo>()
     val detailData: MutableLiveData<CreditReportInfo>
