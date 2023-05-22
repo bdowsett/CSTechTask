@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/donut_fragment"
-        android:name="com.example.cstechtask.view.DonutFragment">
+        android:name="com.example.cstechtask.presentation.view.DonutFragment">
 
         <action android:id="@+id/navigate_to_details"
             app:destination="@id/detail_fragment">
@@ -17,6 +17,6 @@
 
     <fragment
         android:id="@+id/detail_fragment"
-        android:name ="com.example.cstechtask.view.DetailFragment"/>
+        android:name ="com.example.cstechtask.presentation.view.DetailFragment"/>
 
 </navigation>

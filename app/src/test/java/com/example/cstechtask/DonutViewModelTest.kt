@@ -2,13 +2,11 @@ package com.example.cstechtask
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.cstechtask.data.DonutApi
 import com.example.cstechtask.domain.model.CoachingSummaryData
 import com.example.cstechtask.domain.model.CreditReportInfoData
 import com.example.cstechtask.domain.model.DonutData
-import com.example.cstechtask.domain.repository.DonutRepository
 import com.example.cstechtask.domain.use_case.GetDonutDetailsUseCase
-import com.example.cstechtask.viewmodel.DonutViewModel
+import com.example.cstechtask.presentation.viewmodel.DonutViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -71,9 +69,7 @@ class DonutViewModelTest {
     )
 
     private val dataObserver: Observer<DonutData> = mock()
-    private var donutDetailsRepo: DonutRepository = mock()
     private var getDonutDetailsUseCase: GetDonutDetailsUseCase = mock()
-    private var donutApi: DonutApi = mock()
     private val viewModel = DonutViewModel(getDonutDetailsUseCase)
 
     @Test

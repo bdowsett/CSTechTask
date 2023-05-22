@@ -3,7 +3,7 @@ package com.example.cstechtask
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.cstechtask.domain.model.CreditReportInfoData
-import com.example.cstechtask.viewmodel.DetailViewModel
+import com.example.cstechtask.presentation.viewmodel.DetailViewModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Rule

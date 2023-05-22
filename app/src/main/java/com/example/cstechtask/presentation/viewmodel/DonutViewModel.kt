@@ -1,4 +1,4 @@
-package com.example.cstechtask.viewmodel
+package com.example.cstechtask.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

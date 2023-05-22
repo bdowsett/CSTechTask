@@ -1,4 +1,4 @@
-package com.example.cstechtask.view
+package com.example.cstechtask.presentation.view
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.cstechtask.R
 import com.example.cstechtask.databinding.FragmentDonutBinding
-import com.example.cstechtask.viewmodel.DonutViewModel
+import com.example.cstechtask.presentation.viewmodel.DonutViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

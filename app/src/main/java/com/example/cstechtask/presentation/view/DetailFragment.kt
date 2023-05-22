@@ -1,8 +1,8 @@
-package com.example.cstechtask.view
+package com.example.cstechtask.presentation.view
 
 import com.example.cstechtask.R
 import com.example.cstechtask.domain.model.CreditReportInfoData
-import com.example.cstechtask.viewmodel.DetailViewModel
+import com.example.cstechtask.presentation.viewmodel.DetailViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
