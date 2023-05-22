@@ -1,5 +1,6 @@
-package com.example.cstechtask.model
+package com.example.cstechtask.data
 
+import com.example.cstechtask.data.dto.DonutDto
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -9,7 +10,7 @@ import retrofit2.http.GET
 
 interface DonutApi {
     @GET("endpoint.json")
-    suspend fun getDonutDetails(): Response<DonutData>
+    suspend fun getDonutDetails(): DonutDto
 }
 
 val retrofit by lazy {

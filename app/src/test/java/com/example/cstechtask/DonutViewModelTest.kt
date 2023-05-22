@@ -2,12 +2,11 @@ package com.example.cstechtask
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.cstechtask.model.CoachingSummary
-import com.example.cstechtask.model.CreditReportInfo
-import com.example.cstechtask.model.DonutApi
-import com.example.cstechtask.model.DonutData
-import com.example.cstechtask.model.DonutDetailsRepository
-import com.example.cstechtask.model.DonutDetailsRepositoryImpl
+import com.example.cstechtask.domain.model.CoachingSummary
+import com.example.cstechtask.domain.model.CreditReportInfo
+import com.example.cstechtask.data.DonutApi
+import com.example.cstechtask.domain.model.DonutData
+import com.example.cstechtask.domain.repository.DonutRepository
 import com.example.cstechtask.viewmodel.DonutViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -73,7 +72,7 @@ class DonutViewModelTest {
 
     private val viewModel = DonutViewModel()
     private val dataObserver: Observer<DonutData> = mock()
-    private var donutDetailsRepo: DonutDetailsRepository = mock()
+    private var donutDetailsRepo: DonutRepository = mock()
     private var donutApi: DonutApi = mock()
 
     @Test

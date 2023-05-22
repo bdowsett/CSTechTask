@@ -11,13 +11,15 @@ import androidx.navigation.findNavController
 import com.example.cstechtask.R
 import com.example.cstechtask.databinding.FragmentDonutBinding
 import com.example.cstechtask.viewmodel.DonutViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DonutFragment : Fragment() {
     lateinit var bundle: Bundle
 
     private val donutViewModel: DonutViewModel by viewModels()
 
-    private var _binding :FragmentDonutBinding? = null
+    private var _binding: FragmentDonutBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(

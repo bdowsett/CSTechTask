@@ -1,7 +1,7 @@
 package com.example.cstechtask.view
 
 import com.example.cstechtask.R
-import com.example.cstechtask.model.CreditReportInfo
+import com.example.cstechtask.domain.model.CreditReportInfoData
 import com.example.cstechtask.viewmodel.DetailViewModel
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,7 +26,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentDetailBinding.inflate(inflater, container, false)
-        val data: CreditReportInfo? = arguments?.getParcelable("credit_Report_Info")
+        val data: CreditReportInfoData? = arguments?.getParcelable("credit_Report_Info")
         if (data != null) {
             detailViewModel.setData(data)
         }

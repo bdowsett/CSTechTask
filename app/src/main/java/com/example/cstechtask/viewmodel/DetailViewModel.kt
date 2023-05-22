@@ -2,15 +2,15 @@ package com.example.cstechtask.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cstechtask.model.CreditReportInfo
+import com.example.cstechtask.domain.model.CreditReportInfoData
 
 class DetailViewModel : ViewModel() {
 
-    private val _detailData = MutableLiveData<CreditReportInfo>()
-    val detailData: MutableLiveData<CreditReportInfo>
+    private val _detailData = MutableLiveData<CreditReportInfoData>()
+    val detailData: MutableLiveData<CreditReportInfoData>
         get() = _detailData
 
-    fun setData(data: CreditReportInfo) {
+    fun setData(data: CreditReportInfoData) {
         detailData.value = data
     }
 }

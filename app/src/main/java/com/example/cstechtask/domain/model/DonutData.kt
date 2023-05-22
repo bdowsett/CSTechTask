@@ -1,27 +1,27 @@
-package com.example.cstechtask.model
+package com.example.cstechtask.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 data class DonutData(
     val accountIDVStatus: String,
-    val creditReportInfo: CreditReportInfo,
+    val creditReportInfo: CreditReportInfoData,
     val dashboardStatus: String,
     val personaType: String,
-    val coachingSummary: CoachingSummary,
+    val coachingSummary: CoachingSummaryData,
     val augmentedCreditScore: Long? = null,
 )
 
-data class CoachingSummary(
+data class CoachingSummaryData(
     val activeTodo: Boolean,
     val activeChat: Boolean,
     val numberOfTodoItems: Long,
     val numberOfCompletedTodoItems: Long,
-    //val selected: Boolean,
+    val selected: Boolean,
 )
 
 @Parcelize
-data class CreditReportInfo(
+data class CreditReportInfoData(
     val score: Long,
     val scoreBand: Long,
     val clientRef: String,
@@ -37,7 +37,7 @@ data class CreditReportInfo(
     val changedScore: Long,
     val currentShortTermDebt: Long,
     val currentShortTermNonPromotionalDebt: Long,
-    //val currentShortTermCreditLimit: Long,
+    val currentShortTermCreditLimit: Long,
     val currentShortTermCreditUtilisation: Long,
     val changeInShortTermDebt: Long,
     val currentLongTermDebt: Long,
@@ -50,4 +50,4 @@ data class CreditReportInfo(
     val equifaxScoreBand: Long,
     val equifaxScoreBandDescription: String,
     val daysUntilNextReport: Long,
-): Parcelable
+) : Parcelable
