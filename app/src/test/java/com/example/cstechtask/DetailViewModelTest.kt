@@ -2,7 +2,7 @@ package com.example.cstechtask
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.cstechtask.domain.model.CreditReportInfo
+import com.example.cstechtask.domain.model.CreditReportInfoData
 import com.example.cstechtask.viewmodel.DetailViewModel
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
@@ -17,9 +17,9 @@ class DetailViewModelTest {
     val taskExecutor = InstantTaskExecutorRule()
 
     private val viewModel = DetailViewModel()
-    private val dataObserver: Observer<CreditReportInfo> = mock()
+    private val dataObserver: Observer<CreditReportInfoData> = mock()
 
-    val testCreditReportInfo = CreditReportInfo(
+    val testCreditReportInfo = CreditReportInfoData(
         score = 1870,
         scoreBand = 9010,
         clientRef = "principes",
@@ -46,7 +46,7 @@ class DetailViewModelTest {
         numNegativeScoreFactors = 2055,
         equifaxScoreBand = 4262,
         equifaxScoreBandDescription = "iusto",
-        daysUntilNextReport = 6943,
+        daysUntilNextReport = 6943, currentShortTermCreditLimit = 1969,
     )
 
     @Test

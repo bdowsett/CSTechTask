@@ -30,10 +30,5 @@ object AppModule {
     fun providesDonutRepo(api: DonutApi): DonutRepository {
         return DonutRepositoryImpl(api)
     }
-
-    @Provides
-    @Singleton
-    fun providesUseCase(repo: DonutRepository): GetDonutDetailsUseCase {
-        return GetDonutDetailsUseCase(repo)
-    }
 }
+

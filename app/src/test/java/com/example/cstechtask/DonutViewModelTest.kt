@@ -2,11 +2,12 @@ package com.example.cstechtask
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.cstechtask.domain.model.CoachingSummary
-import com.example.cstechtask.domain.model.CreditReportInfo
 import com.example.cstechtask.data.DonutApi
+import com.example.cstechtask.domain.model.CoachingSummaryData
+import com.example.cstechtask.domain.model.CreditReportInfoData
 import com.example.cstechtask.domain.model.DonutData
 import com.example.cstechtask.domain.repository.DonutRepository
+import com.example.cstechtask.domain.use_case.GetDonutDetailsUseCase
 import com.example.cstechtask.viewmodel.DonutViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -14,10 +15,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.BDDMockito.given
-import org.mockito.BDDMockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
-import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DonutViewModelTest {
@@ -30,7 +29,7 @@ class DonutViewModelTest {
 
     private val testDonutData = DonutData(
         accountIDVStatus = "perpetua",
-        creditReportInfo = CreditReportInfo(
+        creditReportInfo = CreditReportInfoData(
             score = 3932,
             scoreBand = 5488,
             clientRef = "idque",
@@ -57,29 +56,30 @@ class DonutViewModelTest {
             numNegativeScoreFactors = 4108,
             equifaxScoreBand = 8641,
             equifaxScoreBandDescription = "homero",
-            daysUntilNextReport = 8876,
+            daysUntilNextReport = 8876, currentShortTermCreditLimit = 3349,
         ),
         dashboardStatus = "et",
         personaType = "iuvaret",
-        coachingSummary = CoachingSummary(
+        coachingSummary = CoachingSummaryData(
             activeTodo = false,
             activeChat = false,
             numberOfTodoItems = 7306,
             numberOfCompletedTodoItems = 8418,
+            selected = false,
         ),
         augmentedCreditScore = null,
     )
 
-    private val viewModel = DonutViewModel()
     private val dataObserver: Observer<DonutData> = mock()
     private var donutDetailsRepo: DonutRepository = mock()
+    private var getDonutDetailsUseCase: GetDonutDetailsUseCase = mock()
     private var donutApi: DonutApi = mock()
+    private val viewModel = DonutViewModel(getDonutDetailsUseCase)
 
     @Test
     fun testLiveDataIsSet() = runTest {
         viewModel.donutData.observeForever(dataObserver)
-        given(donutDetailsRepo.getDonutDetails()).willReturn(Response.success(testDonutData))
-        `when`(donutDetailsRepo.getDonutDetails()).thenReturn(Response.success(testDonutData))
+        given(getDonutDetailsUseCase.getDonutDetails()).willReturn(testDonutData)
 
         // Method under test
         viewModel.getDonutDetails()
